@@ -60,17 +60,16 @@ Mobilna aplikacja sklepu komputerowego stworzona w technologii **Xamarin.Forms**
 
 - Uruchom RestApi w Visual Studio (F5)
 
-3. Uruchom aplikację mobilną
+### 3. Uruchom aplikację mobilną
 
 - Ustaw projekt TechShopApp.Android lub TechShopApp.UWP jako startowy
 
 - Upewnij się, że aplikacja odwołuje się do adresu lokalnego API, np.:
-```bash
 http://10.0.2.2:5000/api/produkty
-```
+
 🔁 Jeśli testujesz na emulatorze Androida, użyj 10.0.2.2 zamiast localhost.
 
-##  Folder database
+## 💾 Folder `database/`
 
 Zawiera pełny skrypt SQL (script.sql) do odtworzenia struktury bazy danych:
 - Produkty
