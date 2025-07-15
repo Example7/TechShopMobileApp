@@ -1,0 +1,1 @@
+C:\Users\kacpe\Desktop\ProjektKK\TechShopApp\TechShopApp.UWP\TechShopApp.UWP.csproj;x86

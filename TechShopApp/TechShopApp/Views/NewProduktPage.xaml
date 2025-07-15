@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TechShopApp.Views.NewProduktPage"
+             Shell.PresentationMode="ModalAnimated"
+             Title="Nowy Produkt"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             BackgroundColor="#121212">
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="HeightRequest" Value="40"/>
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="BackgroundColor" Value="#1E1E1E"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="PlaceholderColor" Value="#BBB"/>
+        </Style>
+        <Style TargetType="Editor">
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="HeightRequest" Value="100"/>
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="BackgroundColor" Value="#1E1E1E"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="PlaceholderColor" Value="#BBB"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="CornerRadius" Value="25"/>
+            <Setter Property="TextColor" Value="White"/>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="0" Spacing="15">
+                <Grid Padding="10">
+                    <Grid.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#123456" Offset="0.0" />
+                            <GradientStop Color="#0F0F3F" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Label Text="Nowy Produkt"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+                </Grid>
+                <StackLayout Padding="15" Spacing="15">
+                    <Label Text="Nazwa" FontSize="Medium" TextColor="White" />
+                    <Entry Text="{Binding Nazwa, Mode=TwoWay}" />
+
+                    <Label Text="Opis" FontSize="Medium" TextColor="White" />
+                    <Editor Text="{Binding Opis, Mode=TwoWay}" AutoSize="TextChanges" />
+
+                    <Label Text="Cena" FontSize="Medium" TextColor="White" />
+                    <Entry Text="{Binding Cena, Mode=TwoWay}" Keyboard="Numeric" />
+
+                    <Label Text="Stan magazynu" FontSize="Medium" TextColor="White" />
+                    <Entry Text="{Binding StanMagazynu, Mode=TwoWay}" Keyboard="Numeric" />
+
+                    <Label Text="Kategoria" FontSize="Medium" TextColor="White" />
+                    <Picker ItemsSource="{Binding ListaKategorii}"
+                            ItemDisplayBinding="{Binding Nazwa}"
+                            SelectedItem="{Binding SelectedKategoria}"
+                            FontSize="Medium" />
+                    <Grid Padding="0,15,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Text="Anuluj" Command="{Binding CancelCommand}" BackgroundColor="#FF2E63"/>
+                        <Button Grid.Column="1" Text="Zapisz" Command="{Binding SaveCommand}" BackgroundColor="#00C6AE"/>
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

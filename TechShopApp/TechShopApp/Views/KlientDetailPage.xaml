@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TechShopApp.Views.KlientDetailPage"
+             Title="{Binding Title}"
+             BackgroundColor="#F5F5F5">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="TextColor" Value="#34495E" />
+        </Style>
+        <Style x:Key="FieldNameStyle" TargetType="Label">
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="TextColor" Value="#2980B9" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="HeightRequest" Value="55" />
+            <Setter Property="CornerRadius" Value="30" />
+            <Setter Property="TextColor" Value="White" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="25" Padding="0">
+                <Frame Padding="15" HasShadow="True" CornerRadius="0" BackgroundColor="#123456">
+                    <Label Text="Szczegóły Klienta"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="26"
+                           FontAttributes="Bold"
+                           TextColor="White" />
+                </Frame>
+                <StackLayout Spacing="18" Padding="20,0,20,0">
+                    <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="15">
+                        <StackLayout>
+                            <Label Text="Id Klienta" Style="{StaticResource FieldNameStyle}" />
+                            <Label Text="{Binding KlientId}" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="15">
+                        <StackLayout>
+                            <Label Text="Imię" Style="{StaticResource FieldNameStyle}" />
+                            <Label Text="{Binding Imie}" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="15">
+                        <StackLayout>
+                            <Label Text="Nazwisko" Style="{StaticResource FieldNameStyle}" />
+                            <Label Text="{Binding Nazwisko}" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="15">
+                        <StackLayout>
+                            <Label Text="Email" Style="{StaticResource FieldNameStyle}" />
+                            <Label Text="{Binding Email}" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="15">
+                        <StackLayout>
+                            <Label Text="Telefon" Style="{StaticResource FieldNameStyle}" />
+                            <Label Text="{Binding Telefon}" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="15">
+                        <StackLayout>
+                            <Label Text="Adres" Style="{StaticResource FieldNameStyle}" />
+                            <Label Text="{Binding Adres}" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Spacing="20" Padding="10,25,10,0">
+                    <Button Text="Anuluj" Command="{Binding CancelCommand}" BackgroundColor="#E74C3C" HorizontalOptions="FillAndExpand" />
+                    <Button Text="Edytuj" Command="{Binding UpdateCommand}" BackgroundColor="#2980B9" HorizontalOptions="FillAndExpand" />
+                    <Button Text="Usuń" Command="{Binding DeleteCommand}" BackgroundColor="#F39C12" HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

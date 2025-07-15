@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TechShopApp.Views.StartupPage"
+             Shell.NavBarIsVisible="False"
+             Shell.FlyoutBehavior="Disabled">
+    <Grid>
+        <Image Source="https://img.freepik.com/free-vector/realistic-background-futuristic-style_23-2149129125.jpg"
+               Aspect="AspectFill"
+               Opacity="0.4" />
+        <StackLayout VerticalOptions="CenterAndExpand" Spacing="10" Padding="30, 10">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
+                <Label Text="Tech" FontSize="80" FontFamily="Cabin" TextColor="#08D9D6"/>
+                <Label Text="Shop" FontSize="80" FontFamily="Cabin" TextColor="#FF2E63"/>
+            </StackLayout>
+            <Label Text="TechStore – Twoje centrum nowoczesnych technologii. Przeglądaj, porównuj i zamawiaj najlepszy sprzęt komputerowy bez wychodzenia z domu." 
+               FontSize="14" CharacterSpacing="5" Margin="50"
+               HorizontalOptions="Center" 
+               HorizontalTextAlignment="Center"
+               FontFamily="Metropolis" 
+               TextColor="#EAEAEA"/>
+            <Button Text="Logowanie" BackgroundColor="#08D9D6" TextColor="#252A34" FontAttributes="Bold" FontSize="22"
+                WidthRequest="410" HeightRequest="55" HorizontalOptions="Center" CornerRadius="30" Command="{Binding LoginCommand}"/>
+            <Button Text="Rejestracja" BackgroundColor="#FF2E63" TextColor="#252A34" FontAttributes="Bold" FontSize="22" BorderWidth="0"
+                WidthRequest="410" HeightRequest="55" HorizontalOptions="Center" CornerRadius="30" Command="{Binding RegisterCommand}"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>

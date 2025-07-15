@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TechShopApp.Views.ZamowienieView.ZamowieniePage"    
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:TechShopApp.ViewModels.ZamowienieVM"
+             xmlns:model="clr-namespace:TechShopApp.ServiceReference"
+             x:Name="BrowseItemsPage">
+    <Grid BackgroundColor="black" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" BackgroundColor="#123458" Padding="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Label TextColor="#08D9D6" FontSize="34" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Column="0" Margin="0,-10,0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Tech" FontSize="34" FontAttributes="Bold"/>
+                        <Span Text="Shop" TextColor="#FF2E63"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <SearchBar Grid.Column="1"
+                       Placeholder="Wyszukaj dostawę"
+                       PlaceholderColor="#D4C9BE"
+                       Text="{Binding SearchText, Mode=TwoWay}"
+                       IsVisible="False" />
+            <Frame Grid.Column="2"
+                   Padding="10,5"
+                   BackgroundColor="#FF2E63"
+                   CornerRadius="0"
+                   HasShadow="True"
+                   HorizontalOptions="End"
+                   VerticalOptions="Center">
+                <StackLayout Orientation="Horizontal" Spacing="8">
+                    <Image Source="add_icon.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center"/>
+                    <Label Text="Dodaj zamówienie"
+                           TextColor="Black"
+                           FontSize="20"
+                           VerticalOptions="Center"/>
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddItemCommand}" />
+                </Frame.GestureRecognizers>
+            </Frame>
+        </Grid>
+        <Grid Grid.Row="1" HeightRequest="90">
+            <Image Source="https://img.freepik.com/free-vector/realistic-background-futuristic-style_23-2149129125.jpg"
+                   Aspect="AspectFill"
+                   Opacity="0.4"
+                   VerticalOptions="FillAndExpand"
+                   HorizontalOptions="FillAndExpand"
+                   IsVisible="True" />
+
+            <StackLayout VerticalOptions="Center" Spacing="5" BackgroundColor="Transparent">
+                <SearchBar Placeholder="Wyszukaj zamówienie"
+                           PlaceholderColor="#D4C9BE"
+                           Text="{Binding SearchText, Mode=TwoWay}"
+                           TextColor="White"
+                           BackgroundColor="#1E1E1E"
+                           FontSize="14"/>
+
+                <Label Text="{Binding ZamowieniaCountText}"
+                       FontSize="18"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"
+                       VerticalOptions="Center"/>
+            </StackLayout>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Image Source="https://img.freepik.com/free-vector/realistic-background-futuristic-style_23-2149129125.jpg"
+                   Aspect="AspectFill"
+                   Opacity="0.5" />
+
+            <RefreshView x:DataType="local:ZamowienieViewModel"
+                         Command="{Binding LoadItemsCommand}"
+                         IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+                         Margin="20, 10">
+
+                <CollectionView x:Name="ItemsListView"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                SelectionMode="None"
+                                ItemsSource="{Binding Items}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="15"/>
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="15" BackgroundColor="White" Padding="15" HasShadow="True" Margin="0,5,0,5">
+                                <StackLayout Spacing="5" x:DataType="model:ZamowienieForView">
+                                    <Grid ColumnSpacing="10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="{Binding ZamowienieId, StringFormat='ID: {0}'}" FontSize="16" TextColor="#333" Grid.Column="0"/>
+                                        <Label Text="{Binding KlientData, StringFormat='Nazwa klienta: {0}'}" FontSize="16" TextColor="#333" Grid.Column="1"/>
+                                    </Grid>
+
+                                    <BoxView HeightRequest="1" Color="#ccc" Margin="0,5"/>
+
+                                    <Label Text="{Binding DataZamowienia, StringFormat='📅 {0:dd.MM.yyyy}'}" FontSize="14" TextColor="#00796B"/>
+                                    <Label Text="{Binding Status, StringFormat='📦 {0}'}" FontSize="14" TextColor="#00796B"/>
+                                    <Label Text="{Binding Kwota, StringFormat='kwota:  {0}'}" FontSize="14" TextColor="#00796B"/>
+
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            NumberOfTapsRequired="1"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:ZamowienieViewModel}}, Path=ItemTapped}" 
+                                            CommandParameter="{Binding .}" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </Grid>
+    </Grid>
+</ContentPage>

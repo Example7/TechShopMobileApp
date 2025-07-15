@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TechShopApp.Views.ProduktDetailPage"
+             Title="{Binding Title}"
+             BackgroundColor="#121212">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="TextColor" Value="White"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="CornerRadius" Value="25"/>
+            <Setter Property="TextColor" Value="White"/>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="15" Padding="0">
+                <Grid Padding="10">
+                    <Grid.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#123456" Offset="0.0" />
+                            <GradientStop Color="#0F0F3F" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Label Text="Szczegóły Produktu"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="White"/>
+                </Grid>
+                <StackLayout Padding="15" Spacing="15">
+                    <Label Text="Id Produktu" FontAttributes="Bold" TextColor="#FF2E63" />
+                    <Label Text="{Binding Id}" />
+
+                    <Label Text="Nazwa Produktu" FontAttributes="Bold" TextColor="#FF2E63" />
+                    <Label Text="{Binding Nazwa}" />
+
+                    <Label Text="Opis Produktu" FontAttributes="Bold" TextColor="#FF2E63" />
+                    <Label Text="{Binding Opis}" />
+
+                    <Label Text="Cena" FontAttributes="Bold" TextColor="#FF2E63" />
+                    <Label Text="{Binding Cena}" />
+
+                    <Label Text="Stan Magazynu" FontAttributes="Bold" TextColor="#FF2E63" />
+                    <Label Text="{Binding StanMagazynu}" />
+
+                    <Label Text="Kategoria" FontAttributes="Bold" TextColor="#FF2E63" />
+                    <Label Text="{Binding SelectedKategoria.Nazwa}" />
+                    <Grid Padding="0,15,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Text="Anuluj" Command="{Binding CancelCommand}" BackgroundColor="#FF2E63" />
+                        <Button Grid.Column="1" Text="Edytuj" Command="{Binding UpdateCommand}" BackgroundColor="#00C6AE" />
+                        <Button Grid.Column="2" Text="Usuń" Command="{Binding DeleteCommand}" BackgroundColor="#FF5C5C" />
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

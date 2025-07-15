@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="TechShopApp.Views.ZamowioneProduktyView.NewZamowioneProduktyPage"
+             Shell.PresentationMode="ModalAnimated"
+             Title="Nowy produkt do zamówienia"
+             BackgroundColor="#121212">
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="HeightRequest" Value="40"/>
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="BackgroundColor" Value="#1E1E1E"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="PlaceholderColor" Value="#BBB"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="CornerRadius" Value="25"/>
+            <Setter Property="TextColor" Value="White"/>
+        </Style>
+        <Style TargetType="Picker">
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="HeightRequest" Value="40"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="BackgroundColor" Value="#1E1E1E"/>
+            <Setter Property="Margin" Value="0,5"/>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="15" Padding="15">
+                <Grid>
+                    <Grid.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#123456" Offset="0.0" />
+                            <GradientStop Color="#0F0F3F" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Label Text="Nowy produkt do tego zamówienia"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+                </Grid>
+
+                <Label Text="Nazwa produktu" FontSize="Medium" TextColor="White" />
+                <Picker ItemsSource="{Binding ListaProduktow}"
+                        ItemDisplayBinding="{Binding Nazwa}"
+                        SelectedItem="{Binding SelectedProdukt}"/>
+
+                <Label Text="Ilość" FontSize="Medium" TextColor="White" />
+                <Entry Text="{Binding Ilosc, Mode=TwoWay}"
+                       Keyboard="Numeric"
+                       Placeholder="Podaj ilość" />
+
+                <Label Text="Cena jednostkowa" FontSize="Medium" TextColor="White" />
+                <Entry Text="{Binding CenaJednostkowa, Mode=TwoWay, StringFormat='{0:F2}'}"
+                       Keyboard="Numeric"
+                       Placeholder="Podaj cenę jednostkową" />
+
+                <Grid Padding="0,15,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Text="Anuluj" Command="{Binding CancelCommand}" BackgroundColor="#FF2E63" />
+                    <Button Grid.Column="1" Text="Zapisz" Command="{Binding SaveCommand}" BackgroundColor="#00C6AE" />
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

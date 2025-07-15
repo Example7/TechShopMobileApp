@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="TechShopApp.Views.ZamowioneProduktyView.EditZamowioneProduktyPage"
+             Title="{Binding Title}"
+             Shell.PresentationMode="ModalAnimated"
+             BackgroundColor="#2C3E50">
+
+    <ScrollView>
+        <StackLayout Spacing="20" Padding="0">
+
+            <Label Text="Edytuj Produkt Zamówienia"
+                   HorizontalOptions="Center"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   TextColor="#ECF0F1"
+                   Margin="20,20,20,0" />
+
+            <StackLayout Spacing="20" Margin="20,0">
+
+                <!-- Produkt -->
+                <Frame Padding="15"
+                       BackgroundColor="#34495E"
+                       HasShadow="True"
+                       CornerRadius="10">
+                    <StackLayout>
+                        <Label Text="Produkt"
+                               FontSize="Medium"
+                               TextColor="#ECF0F1"
+                               FontAttributes="Bold"/>
+                        <Picker ItemsSource="{Binding ListaProduktow}" 
+                                ItemDisplayBinding="{Binding Nazwa}" 
+                                SelectedItem="{Binding SelectedProdukt}" 
+                                FontSize="Medium"
+                                TextColor="White"
+                                BackgroundColor="#2C3E50" />
+                    </StackLayout>
+                </Frame>
+
+                <!-- Ilość -->
+                <Frame Padding="15"
+                       BackgroundColor="#34495E"
+                       HasShadow="True"
+                       CornerRadius="10">
+                    <StackLayout>
+                        <Label Text="Ilość"
+                               FontSize="Medium"
+                               TextColor="#ECF0F1"
+                               FontAttributes="Bold"/>
+                        <Entry Text="{Binding Ilosc, Mode=TwoWay}"
+                               Keyboard="Numeric"
+                               FontSize="Medium"
+                               BackgroundColor="#2C3E50"
+                               TextColor="#ECF0F1" />
+                    </StackLayout>
+                </Frame>
+
+                <!-- Data Zamówienia -->
+                <Frame Padding="15"
+                       BackgroundColor="#34495E"
+                       HasShadow="True"
+                       CornerRadius="10">
+                    <StackLayout>
+                        <Label Text="Data zamówienia"
+                               FontSize="Medium"
+                               TextColor="#ECF0F1"
+                               FontAttributes="Bold"/>
+                        <DatePicker Date="{Binding DataZamowienia, Mode=TwoWay}"
+                                    MinimumDate="2000-01-01"
+                                    TextColor="White"
+                                    BackgroundColor="#2C3E50" />
+                    </StackLayout>
+                </Frame>
+
+                <!-- Cena jednostkowa (readonly) -->
+                <Frame Padding="15"
+                       BackgroundColor="#34495E"
+                       HasShadow="True"
+                       CornerRadius="10">
+                    <StackLayout>
+                        <Label Text="Cena jednostkowa"
+                               FontSize="Medium"
+                               TextColor="#ECF0F1"
+                               FontAttributes="Bold"/>
+                        <Label Text="{Binding CenaJednostkowa}"
+                               FontSize="Medium"
+                               TextColor="#ECF0F1" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+            <!-- Przyciski -->
+            <StackLayout Orientation="Horizontal" Spacing="15" Margin="20,20">
+                <Button Text="Anuluj" Command="{Binding CancelCommand}" 
+                        BackgroundColor="#E74C3C" TextColor="White"
+                        BorderColor="#E74C3C" BorderWidth="2" 
+                        CornerRadius="5" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Zapisz" Command="{Binding SaveCommand}" 
+                        BackgroundColor="#3498DB" TextColor="White"
+                        BorderColor="#3498DB" BorderWidth="2" 
+                        CornerRadius="5" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

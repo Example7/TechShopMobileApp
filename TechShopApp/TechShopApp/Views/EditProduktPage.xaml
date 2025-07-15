@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TechShopApp.Views.EditProduktPage"
+             Title="{Binding Title}"      
+             Shell.PresentationMode="ModalAnimated"
+             BackgroundColor="#121212">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="TextColor" Value="White"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="CornerRadius" Value="25"/>
+            <Setter Property="TextColor" Value="White"/>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="15" Padding="0">
+                <Grid Padding="0" HeightRequest="100">
+                    <Grid.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#123456" Offset="0.0" />
+                            <GradientStop Color="#0F0F3F" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Label Text="Edytuj Produkt"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="26"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+                </Grid>
+                <StackLayout Padding="20" Spacing="20">
+                    <Frame BackgroundColor="#1E1E1E" CornerRadius="12" HasShadow="True">
+                        <StackLayout>
+                            <Label Text="Nazwa Produktu" FontAttributes="Bold" TextColor="#FF2E63"/>
+                            <Editor Text="{Binding Nazwa, Mode=TwoWay}" FontSize="Medium" TextColor="White" AutoSize="TextChanges"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame BackgroundColor="#1E1E1E" CornerRadius="12" HasShadow="True">
+                        <StackLayout>
+                            <Label Text="Opis Produktu" FontAttributes="Bold" TextColor="#FF2E63"/>
+                            <Editor Text="{Binding Opis, Mode=TwoWay}" FontSize="Medium" TextColor="White" AutoSize="TextChanges" HeightRequest="100"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame BackgroundColor="#1E1E1E" CornerRadius="12" HasShadow="True">
+                        <StackLayout>
+                            <Label Text="Cena" FontAttributes="Bold" TextColor="#FF2E63"/>
+                            <Entry Text="{Binding Cena, Mode=TwoWay}" FontSize="Medium" TextColor="White" Keyboard="Numeric"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame BackgroundColor="#1E1E1E" CornerRadius="12" HasShadow="True">
+                        <StackLayout>
+                            <Label Text="Stan Magazynu" FontAttributes="Bold" TextColor="#FF2E63"/>
+                            <Entry Text="{Binding StanMagazynu, Mode=TwoWay}" FontSize="Medium" TextColor="White" Keyboard="Numeric"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame BackgroundColor="#1E1E1E" CornerRadius="12" HasShadow="True">
+                        <StackLayout>
+                            <Label Text="Kategoria" FontAttributes="Bold" TextColor="#FF2E63"/>
+                            <Picker ItemsSource="{Binding ListaKategorii}" 
+                                    ItemDisplayBinding="{Binding Nazwa}" 
+                                    SelectedItem="{Binding SelectedKategoria}"
+                                    FontSize="Medium"/>
+                        </StackLayout>
+                    </Frame>
+                    <Grid ColumnSpacing="15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Text="Anuluj" Command="{Binding CancelCommand}" BackgroundColor="#FF2E63"/>
+                        <Button Grid.Column="1" Text="Zapisz" Command="{Binding SaveCommand}" BackgroundColor="#00C6AE"/>
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

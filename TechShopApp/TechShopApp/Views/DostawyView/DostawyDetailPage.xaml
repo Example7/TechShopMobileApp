@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TechShopApp.Views.DostawyView.DostawyDetailPage"
+             Title="{Binding Title}"
+             BackgroundColor="#FFFFFF">
+    <ScrollView>
+        <StackLayout Padding="0" Spacing="20">
+            <Label Text="Szczegóły Dostawy"
+                   HorizontalOptions="Center"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   TextColor="#2C3E50"
+                   Margin="20,20,20,0" />
+
+            <Frame Padding="15" Margin="20,0"
+                   BackgroundColor="#ECF0F1"
+                   HasShadow="True"
+                   CornerRadius="10">
+                <StackLayout>
+                    <Label Text="Id dostawy" FontSize="Medium" TextColor="#34495E" FontAttributes="Bold"/>
+                    <Label Text="{Binding DostawaId}" FontSize="Medium" TextColor="#2C3E50"/>
+                </StackLayout>
+            </Frame>
+            <Frame Padding="15" Margin="20,0"
+                   BackgroundColor="#ECF0F1"
+                   HasShadow="True"
+                   CornerRadius="10">
+                <StackLayout>
+                    <Label Text="Nazwa dostawcy" FontSize="Medium" TextColor="#34495E" FontAttributes="Bold"/>
+                    <Label Text="{Binding SelectedDostawca.Nazwa}" FontSize="Medium" TextColor="#2C3E50"/>
+                </StackLayout>
+            </Frame>
+            <Frame Padding="15" Margin="20,0"
+                   BackgroundColor="#ECF0F1"
+                   HasShadow="True"
+                   CornerRadius="10">
+                <StackLayout>
+                    <Label Text="Data Dostawy" FontSize="Medium" TextColor="#34495E" FontAttributes="Bold"/>
+                    <Label Text="{Binding DataDostawy, StringFormat='{0:yyyy-MM-dd}'}" FontSize="Medium" TextColor="#2C3E50"/>
+                </StackLayout>
+            </Frame>
+            <Frame Padding="15" Margin="20,0"
+                   BackgroundColor="#ECF0F1"
+                   HasShadow="True"
+                   CornerRadius="10">
+                <StackLayout>
+                    <Label Text="Status Dostawy" FontSize="Medium" TextColor="#34495E" FontAttributes="Bold"/>
+                    <Label Text="{Binding StatusDostawy}" FontSize="Medium" TextColor="#2C3E50"/>
+                </StackLayout>
+            </Frame>
+            <StackLayout Orientation="Horizontal"
+                         Spacing="15"
+                         Margin="20,10,20,20">
+                <Button Text="Anuluj" Command="{Binding CancelCommand}" 
+                        BackgroundColor="#E74C3C" TextColor="White"
+                        BorderColor="#E74C3C" BorderWidth="2" 
+                        CornerRadius="5" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Edytuj" Command="{Binding UpdateCommand}" 
+                        BackgroundColor="#3498DB" TextColor="White"
+                        BorderColor="#3498DB" BorderWidth="2" 
+                        CornerRadius="5" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Usuń" Command="{Binding DeleteCommand}" 
+                        BackgroundColor="#F39C12" TextColor="White"
+                        BorderColor="#F39C12" BorderWidth="2" 
+                        CornerRadius="5" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

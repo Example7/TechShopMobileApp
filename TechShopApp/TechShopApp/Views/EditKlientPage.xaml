@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TechShopApp.Views.EditKlientPage"
+             Title="{Binding Title}"
+             Shell.PresentationMode="ModalAnimated"
+             BackgroundColor="#2C3E50">
+    <ScrollView>
+        <StackLayout Padding="0" Spacing="0">
+            <Frame Padding="20" HasShadow="True" CornerRadius="0" BackgroundColor="#2980B9">
+                <Label Text="Edytuj Klienta"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontSize="30"
+                       FontAttributes="Bold"
+                       TextColor="White" />
+            </Frame>
+            <StackLayout Padding="20" Spacing="20">
+                <Frame BackgroundColor="#34495E" CornerRadius="12" HasShadow="True" Padding="15">
+                    <StackLayout>
+                        <Label Text="Imię" FontSize="16" TextColor="#ECF0F1" FontAttributes="Bold" />
+                        <Entry Text="{Binding Imie, Mode=TwoWay}"
+                               BackgroundColor="#2C3E50"
+                               TextColor="White"
+                               FontSize="16"
+                               HeightRequest="45" />
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="#34495E" CornerRadius="12" HasShadow="True" Padding="15">
+                    <StackLayout>
+                        <Label Text="Nazwisko" FontSize="16" TextColor="#ECF0F1" FontAttributes="Bold" />
+                        <Entry Text="{Binding Nazwisko, Mode=TwoWay}"
+                               BackgroundColor="#2C3E50"
+                               TextColor="White"
+                               FontSize="16"
+                               HeightRequest="45" />
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="#34495E" CornerRadius="12" HasShadow="True" Padding="15">
+                    <StackLayout>
+                        <Label Text="Email" FontSize="16" TextColor="#ECF0F1" FontAttributes="Bold" />
+                        <Entry Text="{Binding Email, Mode=TwoWay}"
+                               BackgroundColor="#2C3E50"
+                               TextColor="White"
+                               FontSize="16"
+                               Keyboard="Email"
+                               HeightRequest="45" />
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="#34495E" CornerRadius="12" HasShadow="True" Padding="15">
+                    <StackLayout>
+                        <Label Text="Telefon" FontSize="16" TextColor="#ECF0F1" FontAttributes="Bold" />
+                        <Entry Text="{Binding Telefon, Mode=TwoWay}"
+                               BackgroundColor="#2C3E50"
+                               TextColor="White"
+                               FontSize="16"
+                               Keyboard="Telephone"
+                               HeightRequest="45" />
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="#34495E" CornerRadius="12" HasShadow="True" Padding="15">
+                    <StackLayout>
+                        <Label Text="Adres" FontSize="16" TextColor="#ECF0F1" FontAttributes="Bold" />
+                        <Entry Text="{Binding Adres, Mode=TwoWay}"
+                               BackgroundColor="#2C3E50"
+                               TextColor="White"
+                               FontSize="16"
+                               HeightRequest="45" />
+                    </StackLayout>
+                </Frame>
+                <StackLayout Orientation="Horizontal" Spacing="15" Padding="0,20,0,20">
+                    <Button Text="Anuluj"
+                            Command="{Binding CancelCommand}"
+                            BackgroundColor="#E74C3C"
+                            TextColor="White"
+                            CornerRadius="25"
+                            FontSize="18"
+                            HeightRequest="50"
+                            HorizontalOptions="FillAndExpand" />
+                    <Button Text="Zapisz"
+                            Command="{Binding SaveCommand}"
+                            BackgroundColor="#2ECC71"
+                            TextColor="White"
+                            CornerRadius="25"
+                            FontSize="18"
+                            HeightRequest="50"
+                            HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

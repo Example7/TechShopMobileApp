@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TechShopApp.Views.NewKlientPage"
+             Shell.PresentationMode="ModalAnimated"
+             Title="Nowy Klient"
+             BackgroundColor="#121212">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="TextColor" Value="#E0E0E0" />
+        </Style>
+        <Style x:Key="FieldNameStyle" TargetType="Label">
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="TextColor" Value="#64B5F6" />
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="BackgroundColor" Value="#1E1E1E" />
+            <Setter Property="TextColor" Value="#FFFFFF" />
+            <Setter Property="HeightRequest" Value="45" />
+            <Setter Property="Margin" Value="0,5" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="Keyboard" Value="Default" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="CornerRadius" Value="25" />
+            <Setter Property="TextColor" Value="White" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="30" Padding="0">
+                <Frame Padding="15" HasShadow="True" CornerRadius="0" BackgroundColor="#1976D2">
+                    <Label Text="Nowy Klient"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="White" />
+                </Frame>
+                <StackLayout Spacing="25" Padding="20,0">
+                    <Frame BackgroundColor="#262626" CornerRadius="12" HasShadow="True" Padding="20" Margin="0,0,0,10">
+                        <StackLayout>
+                            <Label Text="Imię" Style="{StaticResource FieldNameStyle}" />
+                            <Entry Text="{Binding Imie, Mode=TwoWay}" Placeholder="Wpisz imię" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame BackgroundColor="#262626" CornerRadius="12" HasShadow="True" Padding="20" Margin="0,0,0,10">
+                        <StackLayout>
+                            <Label Text="Nazwisko" Style="{StaticResource FieldNameStyle}" />
+                            <Entry Text="{Binding Nazwisko, Mode=TwoWay}" Placeholder="Wpisz nazwisko" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame BackgroundColor="#262626" CornerRadius="12" HasShadow="True" Padding="20" Margin="0,0,0,10">
+                        <StackLayout>
+                            <Label Text="Email" Style="{StaticResource FieldNameStyle}" />
+                            <Entry Text="{Binding Email, Mode=TwoWay}" Placeholder="Wpisz email" Keyboard="Email" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame BackgroundColor="#262626" CornerRadius="12" HasShadow="True" Padding="20" Margin="0,0,0,10">
+                        <StackLayout>
+                            <Label Text="Numer telefonu" Style="{StaticResource FieldNameStyle}" />
+                            <Entry Text="{Binding Telefon, Mode=TwoWay}" Placeholder="Wpisz telefon" Keyboard="Telephone" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame BackgroundColor="#262626" CornerRadius="12" HasShadow="True" Padding="20" Margin="0,0,0,10">
+                        <StackLayout>
+                            <Label Text="Adres" Style="{StaticResource FieldNameStyle}" />
+                            <Entry Text="{Binding Adres, Mode=TwoWay}" Placeholder="Wpisz adres" />
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal" Spacing="20" Padding="0,20,0,20">
+                        <Button Text="Anuluj" Command="{Binding CancelCommand}" BackgroundColor="#E53935" HorizontalOptions="FillAndExpand" />
+                        <Button Text="Zapisz" Command="{Binding SaveCommand}" BackgroundColor="#43A047" HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

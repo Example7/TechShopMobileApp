@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:TechShopApp.ViewModels"
+             x:Class="TechShopApp.Views.LoginPage"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.BindingContext>
+        <viewmodels:LoginViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Image Source="https://img.freepik.com/free-vector/realistic-background-futuristic-style_23-2149129125.jpg"
+                Aspect="AspectFill"
+                Opacity="0.4" />
+        <StackLayout Padding="30" VerticalOptions="CenterAndExpand" Spacing="15">
+
+            <Entry Placeholder="Email" Keyboard="Email" Text="{Binding Username}" />
+            <Entry Placeholder="Hasło" IsPassword="True" Text="{Binding Password}" />
+
+            <Button Text="Zaloguj się"
+                    BackgroundColor="#08D9D6"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    HorizontalOptions="FillAndExpand"
+                    HeightRequest="55"
+                    Command="{Binding LoginCommand}" />
+
+            <Label Text="{Binding ErrorMessage}" TextColor="Red" HorizontalOptions="Center" />
+
+            <Label Text="Nie masz jeszcze konta?" HorizontalOptions="Center" />
+
+            <Button Text="Zarejestruj się"
+                    BackgroundColor="#FF2E63"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    HorizontalOptions="FillAndExpand"
+                    HeightRequest="55"
+                    Command="{Binding RegisterCommand}" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

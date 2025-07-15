@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TechShopApp.Views.ZamowioneProduktyView.ZamowioneProduktyDetailPage"
+             Title="{Binding Title}"
+             BackgroundColor="#FFFFFF">
+    <ScrollView>
+        <StackLayout Padding="0" Spacing="20">
+            <Label Text="Szczegóły Zamówionego Produktu"
+                   HorizontalOptions="Center"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   TextColor="#2C3E50"
+                   Margin="20,20,20,0" />
+
+            <Frame Padding="15" Margin="20,0"
+                   BackgroundColor="#ECF0F1"
+                   HasShadow="True"
+                   CornerRadius="10">
+                <StackLayout>
+                    <Label Text="Id Zamówienia" FontSize="Medium" TextColor="#34495E" FontAttributes="Bold"/>
+                    <Label Text="{Binding ZamowienieId}" FontSize="Medium" TextColor="#2C3E50"/>
+                </StackLayout>
+            </Frame>
+
+            <Frame Padding="15" Margin="20,0"
+                   BackgroundColor="#ECF0F1"
+                   HasShadow="True"
+                   CornerRadius="10">
+                <StackLayout>
+                    <Label Text="Id zamówionego produktu" FontSize="Medium" TextColor="#34495E" FontAttributes="Bold"/>
+                    <Label Text="{Binding ProduktId}" FontSize="Medium" TextColor="#2C3E50"/>
+                </StackLayout>
+            </Frame>
+
+            <Frame Padding="15" Margin="20,0"
+                   BackgroundColor="#ECF0F1"
+                   HasShadow="True"
+                   CornerRadius="10">
+                <StackLayout>
+                    <Label Text="Ilość" FontSize="Medium" TextColor="#34495E" FontAttributes="Bold"/>
+                    <Label Text="{Binding Ilosc}" FontSize="Medium" TextColor="#2C3E50"/>
+                </StackLayout>
+            </Frame>
+
+            <Frame Padding="15" Margin="20,0"
+                   BackgroundColor="#ECF0F1"
+                   HasShadow="True"
+                   CornerRadius="10">
+                <StackLayout>
+                    <Label Text="Cena jednostkowa" FontSize="Medium" TextColor="#34495E" FontAttributes="Bold"/>
+                    <Label Text="{Binding CenaJednostkowa}" FontSize="Medium" TextColor="#2C3E50"/>
+                </StackLayout>
+            </Frame>
+
+            <StackLayout Orientation="Horizontal"
+                         Spacing="15"
+                         Margin="20,10,20,20">
+                <Button Text="Anuluj" Command="{Binding CancelCommand}" 
+                        BackgroundColor="#E74C3C" TextColor="White"
+                        BorderColor="#E74C3C" BorderWidth="2" 
+                        CornerRadius="5" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Edytuj" Command="{Binding UpdateCommand}" 
+                        BackgroundColor="#3498DB" TextColor="White"
+                        BorderColor="#3498DB" BorderWidth="2" 
+                        CornerRadius="5" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Usuń" Command="{Binding DeleteCommand}" 
+                        BackgroundColor="#F39C12" TextColor="White"
+                        BorderColor="#F39C12" BorderWidth="2" 
+                        CornerRadius="5" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

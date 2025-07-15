@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "TechShopApp\\TechShopApp.UWP\\TechShopApp.UWP.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "RestApi\\RestApi.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

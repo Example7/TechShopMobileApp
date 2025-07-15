@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TechShopApp.Views.OrderValuePage"
+             Title="Wartość zamówień"
+             BackgroundColor="#121212">
+
+    <Grid Padding="20" RowSpacing="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Padding="20">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#08D9D6" Offset="0.0" />
+                    <GradientStop Color="#FF2E63" Offset="1.0" />
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Text="Tech" FontSize="38" FontAttributes="Bold" TextColor="White" VerticalTextAlignment="Center" />
+            <Label Grid.Column="1" Text="Shop" FontSize="38" FontAttributes="Bold" TextColor="White" VerticalTextAlignment="Center" />
+            <Button Grid.Column="2"
+                    Text="↻"
+                    FontSize="28"
+                    BackgroundColor="Transparent"
+                    TextColor="White"
+                    VerticalOptions="Center"
+                    Command="{Binding RefreshCommand}"
+                    AutomationId="RefreshButton"/>
+        </Grid>
+
+        <ScrollView Grid.Row="1" Margin="0,15,0,0">
+            <StackLayout Spacing="25">
+                <Frame BackgroundColor="#1E1E1E" CornerRadius="20" Padding="25" HasShadow="True">
+                    <StackLayout Spacing="15">
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                            <Image Source="user_icon.png" HeightRequest="24" WidthRequest="24" Margin="0,0,10,0" />
+                            <Label Text="Wybierz klienta" FontSize="20" FontAttributes="Bold" TextColor="#CCCCCC"/>
+                        </StackLayout>
+
+                        <Picker ItemsSource="{Binding Klienci}"
+                                ItemDisplayBinding="{Binding Nazwisko}"
+                                SelectedItem="{Binding SelectedKlient}"
+                                BackgroundColor="#292929"
+                                TextColor="White"
+                                HeightRequest="50"
+                                FontSize="16"/>
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="#1E1E1E" CornerRadius="20" Padding="25" HasShadow="True">
+                    <StackLayout Spacing="15">
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                            <Image Source="money_icon.png" HeightRequest="24" WidthRequest="24" Margin="0,0,10,0" />
+                            <Label Text="Całkowita wartość zamówień (Zrealizowane)" FontSize="20" FontAttributes="Bold" TextColor="#CCCCCC"/>
+                        </StackLayout>
+
+                        <Label Text="{Binding TotalOrderValueOfClientByStatusPLN}" FontSize="40" FontAttributes="Bold" TextColor="#08D9D6" HorizontalOptions="Center" />
+
+                        <Button Text="Pobierz wartość zamówień"
+                                BackgroundColor="#08D9D6"
+                                TextColor="#121212"
+                                CornerRadius="15"
+                                HeightRequest="50"
+                                FontAttributes="Bold"
+                                Command="{Binding GetTotalOrderValueOfClientByStatusCommand}" />
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="#1E1E1E" CornerRadius="20" Padding="25" HasShadow="True">
+                    <StackLayout Spacing="15">
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                            <Image Source="order_icon.png" HeightRequest="24" WidthRequest="24" Margin="0,0,10,0" />
+                            <Label Text="Liczba zamówień klienta" FontSize="20" FontAttributes="Bold" TextColor="#CCCCCC"/>
+                        </StackLayout>
+
+                        <Label Text="{Binding OrderCountByClient}" FontSize="40" FontAttributes="Bold" TextColor="#08D9D6" HorizontalOptions="Center" />
+
+                        <Button Text="Pobierz liczbę zamówień"
+                                BackgroundColor="#08D9D6"
+                                TextColor="#121212"
+                                CornerRadius="15"
+                                HeightRequest="50"
+                                FontAttributes="Bold"
+                                Command="{Binding GetOrderCountByClientCommand}" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
